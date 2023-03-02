@@ -1,0 +1,477 @@
+@import "config.css";
+@import "variables.css"; /*
+@import "popup/popup.css";
+@import "interface/interface.css";
+@import "userChrome-tabline.css"; Seprator Code Is Here */
+
+
+/* Put tab close button to the right */
+.tabbrowser-tab .tab-close-button {
+     margin-left: auto !important; 
+}
+
+/* Fix close button position */
+.tabbrowser-tab:not([pinned]) .tab-label-container {
+    margin-right: -16px;
+}
+
+.tabbrowser-tab:not([pinned]):is([selected="true"], :hover) .tab-label-container[textoverflow="true"] {
+    /*! margin-right: 0; */
+}
+
+#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([pinned]) .tab-close-button {
+    display: block !important;
+}
+
+/* Attempts At Close Button Show On Hover 
+.tabbrowser-tab:is([selected="true"]) > .tab-stack > .tab-content[textoverflow="true"] > .tab-close-button {
+   margin-right: -10px !important;
+}
+/*
+.tab-label-container[selected][textoverflow]:not([pinned])
+    { mask-image: unset !important; }
+*/
+.tab-content {
+    overflow: hidden;
+}
+
+.tab-close-button {
+    border-radius: 50%;
+    background: transparent;
+    fill: transparent !important;
+    transform: translateX(30px) !important;
+    transition: all 0.3s var(--ease-out) !important;
+}
+
+.tab-stack:hover .tab-close-button {
+    transform: translateX(1px) !important;
+    background: rgba(255, 255, 255, .9);
+    fill: var(--lwt-accent-color) !important;
+    box-shadow: -6px 0px 5px 1px var(--gnome-tabbar-tab-active-hover-background);
+}
+
+.tabbrowser-tab[selected=true]:hover .tab-close-button {
+        margin-right: 3px !important;
+}
+
+.tab-close-button {
+    background: rgba(255, 255, 255, .9);
+    fill: var(--lwt-accent-color) !important;
+}
+
+.tabbrowser-tab[visuallyselected=true]:not([labelendaligned]),
+#tabbrowser-tabs:not([closebuttons=activetab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab:not([visuallyselected=true],[labelendaligned]) {
+  --tab-label-mask-size: 2em !important;
+}
+
+:root:not(:-moz-window-inactive) .tab-close-button:hover {
+    background: rgba(255, 255, 255, .2) !important;
+}
+
+/* Hide Playing Icon Background On Hover */
+.tab-icon-overlay:hover {
+    background: transparent !important;  
+}
+
+/* Sign In Background Fix */
+#appMenu-fxa-status2:not([fxastatus]) > #appMenu-fxa-label2 {
+  background-color: transparent !important;
+}
+
+/* Url Bar Patch */
+#identity-box.extensionPage {
+    display: none !important;
+}
+
+:root{ --toolbar-field-focus-border-color: transparent !important; }
+
+#searchbar[focused],
+#searchbar[open] {
+    background-color: var(--toolbar-field-focus-background-color) !important;
+}
+
+#nav-bar {
+    min-height: 50px !important;
+    box-shadow: none !important;
+    background-color: var(--light-base) !important;
+    padding-bottom: 0px !important;
+    background: red !important;
+    border: none !important;
+    box-shadow: var(--gnome-headerbar-box-shadow) !important;
+}
+
+#nav-bar:-moz-window-inactive {
+    box-shadow: none !important;
+    background-color: var(--light-base) !important;
+}
+
+.urlbar-icon {
+    padding-bottom: 0px;
+    fill: var(--lwt-toolbarbutton-icon-fill) !important;
+}
+
+
+/* NavBar Color Fix*/
+toolbox#navigator-toolbox {
+    border-bottom: solid var(--dividers) var(--sidebar-shadow-color) !important;
+}
+
+/* Remove Speaker Icon 
+.tab-icon-overlay{
+    background: transparent !important;
+  }
+
+  .tab-icon-overlay[soundplaying]{
+    fill: transparent !important;
+  }
+
+  .tab-icon-overlay[soundplaying][pinned="true"]{
+    fill: white !important;
+  }  
+
+  .tab-icon-overlay[muted]{
+    fill: transparent !important;
+  }
+
+  .tab-icon-overlay[muted][pinned="true"]{
+    fill: white !important;
+  }  
+
+  .tab-icon-overlay[activemedia-blocked],
+  .tab-icon-sound[activemedia-blocked] {
+      display: none;
+  }
+*/
+
+.tab-icon-overlay {
+  top: -5.5px;
+  inset-inline-end: -6px;
+  z-index: 1; /* Overlay tab title */
+  padding: 2px;
+}
+
+:root[uidensity=compact] .tab-icon-stack[indicator-replaces-favicon] > :not(.tab-icon-overlay),
+#tabbrowser-tabs[secondarytext-unsupported] .tab-icon-stack[indicator-replaces-favicon] > :not(.tab-icon-overlay),
+:root:not([uidensity=compact]) #tabbrowser-tabs:not([secondarytext-unsupported]) .tabbrowser-tab:not(:hover) .tab-icon-overlay[indicator-replaces-favicon],
+:root:not([uidensity=compact]) #tabbrowser-tabs:not([secondarytext-unsupported]) .tabbrowser-tab:hover .tab-icon-stack[indicator-replaces-favicon] > :not(.tab-icon-overlay) {
+  opacity: 1 !important;
+}
+
+#stop-reload-button[animate] > #reload-button > .toolbarbutton-icon,
+#stop-reload-button[animate] > #reload-button[displaystop] + #stop-button > .toolbarbutton-icon {
+  fill: unset !important;
+}
+
+/* Title and Tabbar Color Fix */
+#titlebar #TabsToolbar {
+	padding: 5px 0px 2px 0px !important;
+	background: var(--light-base) !important;
+} 
+
+#PersonalToolbar {
+	background: var(--light-base) !important;
+	color: var(--light-base) !important;
+	padding-bottom: 6px !important;
+	padding-top: 2px !important;
+}
+
+/*
+toolbar #tabs-newtab-button:not([disabled="true"]):not([checked]):not([open]):not(:active) > .toolbarbutton-icon,
+toolbar #tabs-newtab-button:not([disabled="true"]):-moz-any([open], [checked], :hover:active) > .toolbarbutton-icon,
+toolbar #tabs-newtab-button:not([disabled="true"]):-moz-any([open], [checked], :active) > .toolbarbutton-icon {
+	transition: all 0.3s ease !important;
+	fill: var(--frost_color3) !important;
+	border-radius: 3px !important;
+	background-color: var(--light-base) !important;
+}
+*/
+
+toolbar#nav-bar {
+	background: var(--light-base) !important;
+	box-shadow: none !important;
+	padding-bottom: 3px !important;
+}
+
+#sidebar-box,
+.sidebar-panel[lwt-sidebar-brighttext] {
+	background-color: var(--light-base) !important;
+}
+
+.content-container {
+	background-color: var(--light-base) !important;
+	color: var(--light-base) !important;
+}
+
+
+
+/* URL Bar */
+.urlbarView-body-inner {
+    border: 0 !important;
+}
+
+.urlbarView-row {
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
+.urlbarView-row:hover,
+.urlbarView-row-inner:hover {
+    background: var(--lwt-accent-color) !important;
+    background-color: var(--lwt-accent-color) !important;
+}
+
+.urlbarView-row-inner {
+    align-items: center !important;
+    position: relative !important;
+    padding: 12px 0 !important;
+    padding-inline: 48px 16px !important;
+    max-width: 100% !important;
+    width: auto !important;
+}
+
+.urlbarView-no-wrap {
+    height: 100% !important;
+    align-items: center !important;
+    margin-inline-start: 0 !important;
+    max-width: 100% !important;
+}
+
+.urlbarView-row[has-url][type]:not([type="bookmark"]) .urlbarView-row-inner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+
+.urlbarView-row[has-url][type]:not([type="bookmark"]) .urlbarView-no-wrap {
+    height: auto !important;
+    align-self: flex-start !important;
+    width: 100% !important;
+}
+
+.urlbarView-title-separator {
+    visibility: visible !important;
+}
+
+.urlbarView-title-separator::before {
+    content: "-" !important;
+    color: inherit !important;
+}
+
+.urlbarView-title-separator,
+.urlbarView-action {
+    opacity: 0.6 !important;
+    color: inherit !important;
+    font-size: revert !important;
+}
+
+.urlbarView-favicon {
+    position: absolute !important;
+    left: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    fill-opacity: 0.6 !important;
+    flex: unset !important;
+    margin: unset !important;
+}
+
+.urlbarView-title,
+.urlbarView-url {
+    text-overflow: ellipsis !important;
+    mask-image: none !important;
+}
+
+.urlbarView-title {
+    color: var(--urlbarView-popup-title) !important;
+    flex: 1 !important;
+    flex-basis: unset !important;
+}
+
+.urlbarView-url {
+    max-width: 100% !important;
+    font-size: revert !important;
+    color: var(--urlbarView-popup-url) !important;
+    padding: 0 !important;
+}
+
+.urlbarView-url:not(:empty) {
+    visibility: visible !important;
+}
+
+.urlbarView-action:not(:empty) {
+    display: flex !important;
+}
+
+
+.urlbarView-row[type="tip"] > .urlbarView-row-inner > .urlbarView-favicon,
+.urlbarView-row[type="tip"] > .urlbarView-row-inner > .urlbarView-title,
+.urlbarView-tip-button,
+.urlbarView-tip-help {
+    margin-block-end: 0 !important;
+}
+
+.urlbarView .search-one-offs {
+    padding: 4px !important;
+    display: none !important;
+}
+
+.urlbarView .search-panel-one-offs-header {
+    margin-inline-start: 12px !important;
+    line-height: 40px !important;
+    transform: translateY(-1px) !important;
+}
+
+.urlbarView .search-panel-one-offs {
+    border-radius: 0 0 8px 8px !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    float: left !important;
+    max-width: none !important;
+    height: auto !important;
+}
+
+.urlbarView .searchbar-engine-one-off-item {
+    height: 32px !important;
+    border-radius: 16px !important;
+    padding: 0 8px !important;
+    margin: 4px !important;
+    background-image: none !important;
+    color: inherit !important;
+    border: 0 !important;
+}
+
+#urlbar,
+#searchbar {
+    font-size: 14px !important;
+    border-radius: 7px !important;
+    background-color: var(--toolbar-field-background-color) !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    text-align: center;
+    transition: background-color 0.1s var(--ease-basic);
+    margin: 0 !important;
+    color: inherit !important;
+    block-size: border-block !important;
+
+    --urlbar-height: 32px !important;
+
+    min-height: var(--urlbar-height) !important;
+    z-index: 9999;
+}
+
+#urlbar:not(:-moz-lwtheme),
+#searchbar:not(:-moz-lwtheme) {
+    color: inherit !important;
+}
+
+#urlbar[focused],
+#urlbar[open],
+#searchbar[focused],
+#searchbar[open] {
+    text-align: left;
+    background-color: var(--toolbar-field-focus-background-color) !important;
+    outline: 1px solid var(--gnome-focused-urlbar-border-color) !important;
+}
+
+#urlbar:hover,
+#searchbar:hover {
+    outline: 1px solid var(--gnome-focused-urlbar-border-color) !important;
+    transition: all 0.3s ease !important;
+}
+
+
+/* if only focused, don't break out the urlbar */
+#urlbar[focused]:not([open]) {
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+
+#urlbar-input,
+#searchbar-input,
+.searchbar-textbox /* < 71 */ {
+    transform: translateY(var(--input-offset)) !important;
+    line-height: 1.745em !important;
+    margin-left: 10px !important;
+}
+
+#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+	padding-block: 0px !important;
+	padding-inline: 0px !important;
+    outline: none
+  }
+
+  #urlbar[breakout][breakout-extend] {
+    top: 0;
+    left: 0 !important;
+    width: 100% !important;; 
+  }  
+  
+  #urlbar[breakout],
+  #urlbar[breakout][breakout-extend],
+  #urlbar[focused="true"]:not([suppress-focus-border]),
+  #searchbar:focus-within,
+  #search-box[focused] {
+      background-color: var(--toolbar-field-focus-background-color) !important;
+      border-radius: 6px !important;
+      min-height: var(--urlbar-height) !important;
+      width: 100% !important;
+  }
+
+  #urlbar[breakout][breakout-extend="true"] {
+    top: 8px !important;
+  }
+
+  #urlbar {
+      -moz-appearance: none !important;
+      background: var(--gnome-entry-background) !important;
+      outline: 2px solid transparent !important;
+      border: 0 !important;
+      border-radius: 8px !important;
+      box-shadow: none !important;
+      color: var(--gnome-entry-color) !important;
+      margin: 0 !important;
+      padding: 0px !important;
+      box-sizing: border-box;
+      margin: 0px 0 0px !important;
+      --urlbar-height: 32.00px !important; 
+      --urlbar-toolbar-height: 32.00px !important;
+      top: 8px !important;
+  }
+  
+
+  #searchbar,
+  #search-box {
+    -moz-appearance: none !important;
+    background: var(--gnome-entry-background) !important;
+    outline: 1px solid transparent !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    color: var(--gnome-entry-color) !important;
+    max-height: 34px !important;
+    margin: 0 !important;
+    padding: 0px !important;
+    box-sizing: border-box;
+}
+
+.tab-background,.tab-content,.tab-stack {
+    margin-top: 0px;
+    }
+    
+#urlbar-background {
+    display: none !important;
+    color: transparent;
+    background-color: transparent;
+    outline: none;
+}
+
+:root:not([privatebrowsingmode=temporary], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs,
+:root[privatebrowsingmode=temporary]:not([firefoxviewhidden]) :is(
+  toolbarbutton:not(#firefox-view-button),
+  toolbarpaletteitem:not(#wrapper-firefox-view-button)
+) + #tabbrowser-tabs {
+  border-inline-start: 0 !important;
+  padding-inline-start: calc(var(--tab-overflow-pinned-tabs-width) + 2px);
+  margin-inline-start: 0px !important;
+}

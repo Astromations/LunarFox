@@ -1,0 +1,47 @@
+@media (-moz-platform: windows-win8),
+       (-moz-platform: windows-win7),
+
+       /* Legacy (Firefox 99) */
+       (-moz-os-version: windows-win8),
+       (-moz-os-version: windows-win7)
+{
+
+    @media (-moz-windows-glass)
+    {
+        :root:not(:-moz-lwtheme) #titlebar
+        {
+            color: white !important;
+        }
+    }
+
+    :root:not([lwtheme-image]) .titlebar-color
+    {
+        background-image: none !important;
+    }
+
+    @supports -moz-bool-pref("Style.WaveFox") or
+              -moz-bool-pref("Style.Australis") or
+              -moz-bool-pref("Style.Chrome") or
+              -moz-bool-pref("Style.Chrome-Old") or
+              -moz-bool-pref("Style.Edge")
+    {   
+        @media (prefers-contrast)
+        {
+            :root:not(:-moz-lwtheme) .tabbrowser-tab[visuallyselected] .tab-background::before,
+            :root:not(:-moz-lwtheme) .tabbrowser-tab[visuallyselected] .tab-background::after
+            {
+                fill: color-mix(in srgb, var(--toolbar-bgcolor), white 15%) !important;
+            }
+        }
+    }
+       
+    @supports -moz-bool-pref("Style.Menu-Icons-Regular") or
+              -moz-bool-pref("Style.Menu-Icons-Filled")
+    {
+        :root
+        {
+            --align-menu-icons: 0 -22px 0 2px;
+        }
+    }
+
+}

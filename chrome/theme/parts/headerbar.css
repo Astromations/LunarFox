@@ -1,0 +1,23 @@
+/* Header bar */
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Headerbar */
+#nav-bar {
+    padding: 0px 3px !important;
+}
+
+/* Headerbar CSD colors  MOVED TO MAIN
+#nav-bar {
+    background: var(--gnome-headerbar-background) !important;
+    border: none !important;
+    border-bottom: 1px solid var(--gnome-headerbar-border-color) !important;
+    box-shadow: var(--gnome-headerbar-box-shadow) !important;
+}
+
+#nav-bar:-moz-window-inactive {
+    min-height: 360px !important;
+    box-shadow: none !important;
+    background-color: var(--light-base) !important;
+    padding-bottom: 0px !important;
+}
+*/

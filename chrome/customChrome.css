@@ -148,6 +148,7 @@ toolbox#navigator-toolbox {
   inset-inline-end: -6px;
   z-index: 1; /* Overlay tab title */
   padding: 2px;
+  pointer-events: none;
 }
 
 :root[uidensity=compact] .tab-icon-stack[indicator-replaces-favicon] > :not(.tab-icon-overlay),

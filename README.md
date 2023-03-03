@@ -1,6 +1,5 @@
 # LunarFox
 neat lil' firefox theme
-## UI
 ## How It Looks
 <div>
     <a href="https://www.patreon.com/witalihirsch">

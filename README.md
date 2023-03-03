@@ -14,5 +14,5 @@ neat lil' firefox theme
  </a> 
 and
  <a href="https://github.com/witalihirsch/Mono-firefox-theme">
-  Wave Fox
+  Mono
  </a> 
